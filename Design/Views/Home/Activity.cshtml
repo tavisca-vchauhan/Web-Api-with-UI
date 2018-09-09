@@ -1,0 +1,80 @@
+﻿@model IEnumerable<DataAccess.Activity>
+@{
+    ViewBag.Title = "Activity";
+}
+@using Design.Controllers
+@{
+    ActivityController activityController = new ActivityController();
+    List<DataAccess.Activity> activities = activityController.GetValues().ToList();
+}
+<div id="ControllerName">
+    <h4 id="heading">Activity</h4>
+    <hr />
+
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.activityName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.activityDuration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.activityDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsSaved)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsBooked)
+            </th>
+        </tr>
+
+        @foreach (var item in activities)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.activityName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.activityDuration)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.activityDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsSaved)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsBooked)
+                </td>
+                <td>
+                    @Html.ActionLink("Book", "Book", new { id = item.activityID })
+                </td>
+                <td>
+                    @Html.ActionLink("Save", "Save", new { id = item.activityID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.0/prop-types.js"></script>
+    <link rel="stylesheet" href="~/Scripts/Style.css" type="text/css" />
+
+
+    <div class="links">
+    <p class="click">@Html.ActionLink("Car", "Car")</p>
+    <p class="click">@Html.ActionLink("Hotel", "Hotel")</p>
+    <p class="click">@Html.ActionLink("Air", "Air")</p>
+    </div>
+</div>

@@ -1,0 +1,95 @@
+﻿@model DataAccess.Air
+@using Design.Controllers
+@{
+    AirController airController = new AirController();
+    List<DataAccess.Air> airs = airController.GetValues().ToList();
+}
+<div id="ControllerName">
+    <h4 id="heading">Air</h4>
+    <hr />
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ticketNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.departureStation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.destinationStation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.arrivalTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.departureTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.duration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsSaved)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsBooked)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in airs)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ticketNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.departureStation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.destinationStation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.arrivalTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.departureTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.duration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsSaved)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsBooked)
+            </td>
+            <td>
+                @Html.ActionLink("Book", "Book", new { id = item.airId })
+            </td>
+            <td>
+                @Html.ActionLink("Save", "Save", new { id = item.airId })
+            </td>
+        </tr>
+        }
+
+    </table>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.0/prop-types.js"></script>
+    <link rel="stylesheet" href="~/Scripts/Style.css" type="text/css" />
+
+
+    <div class="links">
+        <p class="click">@Html.ActionLink("Car", "Car")</p>
+        <p class="click">@Html.ActionLink("Hotel", "Hotel")</p>
+        <p class="click">@Html.ActionLink("Activity", "Activity")</p>
+    </div>
+</div>

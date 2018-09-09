@@ -1,0 +1,91 @@
+﻿@model DataAccess.Hotel
+@using Design.Controllers
+@{
+    HotelController hotelController = new HotelController();
+    List<DataAccess.Hotel> hotels = hotelController.GetValues().ToList();
+}
+<div id="ControllerName">
+    <h4 id="heading">Hotel</h4>
+    <hr />
+
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IsBooked)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.IsSaved)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.address)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.fare)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.hotelName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.rating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.roomsAvailable)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.wifiAvailability)
+            </th>
+        </tr>
+        @foreach (var item in hotels)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsBooked)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsSaved)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fare)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hotelName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.roomsAvailable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.wifiAvailability)
+            </td>
+            <td>
+                @Html.ActionLink("Book", "Book", new { id = item.hotelId })
+            </td>
+            <td>
+                @Html.ActionLink("Save", "Save", new { id = item.hotelId })
+            </td>
+        </tr>
+        }
+        </table>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.0/prop-types.js"></script>
+<link rel="stylesheet" href="~/Scripts/Style.css" type="text/css" />
+
+<div class="links">
+    <p class="click">@Html.ActionLink("Car", "Car")</p>
+    <p class="click">@Html.ActionLink("Activity", "Activity")</p>
+    <p class="click">@Html.ActionLink("Air", "Air")</p>
+</div>
+</div>

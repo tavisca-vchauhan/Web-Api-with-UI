@@ -1,0 +1,89 @@
+﻿@model IEnumerable<DataAccess.Car>
+@using Design.Controllers
+@{
+    CarController carController = new CarController();
+    List<DataAccess.Car> cars = carController.GetValues().ToList();
+}
+<div id="ControllerName">
+    <h4 id="heading">Car</h4>
+    <hr />
+
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.carName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.carCompany)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.carModel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.engine)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsSaved)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsBooked)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in cars)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.carName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.carCompany)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.carModel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.color)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.engine)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsSaved)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsBooked)
+            </td>
+            <td>
+                @Html.ActionLink("Book", "Book", new { id = item.carId })
+            </td>
+            <td>
+                @Html.ActionLink("Save", "Save", new { id = item.carId })
+            </td>
+        </tr>
+        }
+
+    </table>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.0/prop-types.js"></script>
+    <link rel="stylesheet" href="~/Scripts/Style.css" type="text/css" />
+
+    <div class="links">
+        <p class="click">@Html.ActionLink("Hotel", "Hotel")</p>
+        <p class="click">@Html.ActionLink("Activity", "Activity")</p>
+        <p class="click">@Html.ActionLink("Air", "Air")</p>
+    </div>
+</div>
